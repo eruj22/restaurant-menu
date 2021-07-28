@@ -1,65 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "./Modal";
 
-// menu items
-const entree = [
-  { name: "Green tortilla with smoked bacon", price: 9 },
-  { name: "Roasted tomatoes and avocado on toast", price: 8 },
-  { name: "Ginger chicken stir fry", price: 11.5 },
-  { name: "Shakshuka", price: 7 },
-];
-const desserts = [
-  { name: "Jamaican ginger and caramel cake", price: 3 },
-  {
-    name: "Teff, banana and apricot tea loaf with hazelnut streusel topping",
-    price: 2.5,
-  },
-];
-const drinks = [
-  { name: "Virgin watermelon sangria", price: 2.5 },
-  { name: "Classic mimosas", price: 3 },
-  { name: "Bellini", price: 2 },
-  { name: "Orange and cranberry juice", price: 2 },
-];
+const Table = ({ menu }) => {
+  const { result } = menu;
+  const { menus } = result;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
-const Table = () => {
+  const openModal = (e) => {
+    setIsModalOpen(true);
+    // preveri ce sem kliknil p, vzemi text in ga najdi v apiju, potem pa prikazi podatke
+    const clickedItem = e.target.innerText;
+    setModalContent(clickedItem);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className="menu-wrapper">
       <div className="menu-section">
-        <h2>Brunch menu</h2>
-        {entree.map((item) => {
+        <h2>{menus[0].menu_sections[14].section_name}</h2>
+        {menus[0].menu_sections[14].menu_items.map((item, key) => {
           const { name, price } = item;
           return (
-            <div className="menu-item">
+            <button className="menu-item" onClick={openModal}>
               <p>{name}</p>
               <span>${price}</span>
-            </div>
+            </button>
           );
         })}
       </div>
       <div className="menu-section">
-        <h2>Desserts</h2>
-        {desserts.map((dessert) => {
-          const { name, price } = dessert;
+        <h2>{menus[0].menu_sections[16].section_name}</h2>
+        {menus[0].menu_sections[16].menu_items.map((item, key) => {
+          const { name, price } = item;
           return (
-            <div className="menu-item">
+            <button className="menu-item" onClick={openModal}>
               <p>{name}</p>
               <span>${price}</span>
-            </div>
+            </button>
           );
         })}
       </div>
       <div className="menu-section">
-        <h2>Drinks</h2>
-        {drinks.map((drink) => {
-          const { name, price } = drink;
+        <h2>{menus[0].menu_sections[17].section_name}</h2>
+        {menus[0].menu_sections[17].menu_items.map((item, key) => {
+          const { name, price } = item;
           return (
-            <div className="menu-item">
+            <button className="menu-item" onClick={openModal}>
               <p>{name}</p>
               <span>${price}</span>
-            </div>
+            </button>
           );
         })}
       </div>
+      <Modal
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        modalContent={modalContent}
+      />
     </div>
   );
 };
