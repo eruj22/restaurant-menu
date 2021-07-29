@@ -5,13 +5,23 @@ const Table = ({ menu }) => {
   const { result } = menu;
   const { menus } = result;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState("");
+  const [modalContent, setModalContent] = useState([]);
 
   const openModal = (e) => {
     setIsModalOpen(true);
-    // preveri ce sem kliknil p, vzemi text in ga najdi v apiju, potem pa prikazi podatke
-    const clickedItem = e.target.innerText;
-    setModalContent(clickedItem);
+
+    const clickedItemSection =
+      e.target.parentElement.parentElement.firstChild.innerText;
+    const clickedItemText = e.target.parentElement.firstChild.innerText;
+    const findObjectSection = menus[0].menu_sections.find(
+      (item) => item.section_name === clickedItemSection
+    );
+    const findObject = findObjectSection.menu_items.find(
+      (item) => item.name === clickedItemText
+    );
+    const objectDescription = findObject.description;
+
+    setModalContent([clickedItemText, objectDescription]);
   };
   const closeModal = () => {
     setIsModalOpen(false);
@@ -23,7 +33,7 @@ const Table = ({ menu }) => {
         {menus[0].menu_sections[14].menu_items.map((item, key) => {
           const { name, price } = item;
           return (
-            <button className="menu-item" onClick={openModal}>
+            <button className="menu-item" key={key} onClick={openModal}>
               <p>{name}</p>
               <span>${price}</span>
             </button>
@@ -35,7 +45,7 @@ const Table = ({ menu }) => {
         {menus[0].menu_sections[16].menu_items.map((item, key) => {
           const { name, price } = item;
           return (
-            <button className="menu-item" onClick={openModal}>
+            <button className="menu-item" key={key} onClick={openModal}>
               <p>{name}</p>
               <span>${price}</span>
             </button>
@@ -47,7 +57,7 @@ const Table = ({ menu }) => {
         {menus[0].menu_sections[17].menu_items.map((item, key) => {
           const { name, price } = item;
           return (
-            <button className="menu-item" onClick={openModal}>
+            <button className="menu-item" key={key} onClick={openModal}>
               <p>{name}</p>
               <span>${price}</span>
             </button>
