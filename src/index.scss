@@ -157,13 +157,13 @@ h1 {
   &-container {
     background: white;
     border-radius: 1rem;
+    padding: 1rem;
     width: 90vw;
-    height: 30vh;
     max-width: 900px;
-    text-align: center;
-    display: grid;
     place-items: center;
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
   }
 
   &-close-btn {
@@ -171,5 +171,13 @@ h1 {
     top: 1rem;
     right: 1rem;
     font-size: 2rem;
+  }
+
+  &-text {
+    margin-left: 2rem;
+  }
+
+  &-img {
+    width: 100%;
   }
 }
