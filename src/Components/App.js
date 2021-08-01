@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Table from "./Table";
-import "./index.scss";
+import "../Styles/index.scss";
 
 const url =
   "https://api.documenu.com/v2/restaurant/4072702673999819?key=dae96b96fd7ea91ed27f5397ee34fdeb";
@@ -11,24 +11,23 @@ const App = () => {
 
   const fetchMenu = async () => {
     setLoading(true);
-    try {
-      const response = await fetch(url);
-      const menuItems = await response.json();
-      setLoading(false);
-      // console.log(menuItems);
-      setMenu(menuItems);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
+    const response = await fetch(url)
+      .then((data) => data.json())
+      .catch((error) => error);
+    return response;
   };
 
   useEffect(() => {
-    fetchMenu();
+    fetchMenu().then((data) => {
+      if (data.result.menus[0]) {
+        setMenu(data.result.menus[0]);
+        setLoading(false);
+      }
+    });
   }, []);
 
   if (loading) {
-    return <main>Loading...</main>;
+    return <h1>Loading...</h1>;
   }
 
   return (

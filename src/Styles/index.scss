@@ -1,7 +1,7 @@
 $clr-sign: #cb530e;
 
 .main {
-  background-image: url(./image-mobile.jpg);
+  background-image: url(../Assets/image-mobile.jpg);
   background-size: cover;
   color: #333;
   padding: 2rem;
@@ -87,7 +87,7 @@ h1 {
   }
 
   .main {
-    background-image: url(./image-desktop.jpg);
+    background-image: url(../Assets/image-desktop.jpg);
 
     .menu-wrapper {
       display: grid;

@@ -1,6 +1,6 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import Random from "./random.jpg";
+import Random from "../Assets/random.jpg";
 
 const Modal = ({ isModalOpen, closeModal, modalContent }) => {
   return (
@@ -8,7 +8,7 @@ const Modal = ({ isModalOpen, closeModal, modalContent }) => {
       <div className="modal-container">
         {/* in the API there is no pic included so it's just one random */}
         <div className="modal-container-img">
-          <img src={Random} alt="random picture" className="modal-img" />
+          <img src={Random} alt="marble" className="modal-img" />
         </div>
         <div className="modal-text">
           <h3>{modalContent[0]}</h3>
