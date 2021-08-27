@@ -4,11 +4,11 @@
 
 ## General Info
 
-This is a simple web app that fetches data for restaurant menu from API <a href="https://documenu.com/" target="_blank">https://documenu.com/</a> and displays it. When you click on different items it shows more information about it in modal. The purpose of the app is just to practice coding in React.
+This is a simple web app that fetches data for restaurant menu from API <a href="https://documenu.com/">https://documenu.com/</a> and displays it. When you click on different items it shows more information about it in modal. The purpose of the app is just to practice coding in React.
 
 ## Demo
 
-Here is a working live demo:
+Here is a working live demo: <a href="admiring-gates-b1038c.netlify.app">Restaurant menu</a>
 
 ## Technologies used
 
