@@ -8,7 +8,7 @@ This is a simple web app that fetches data for restaurant menu from API <a href=
 
 ## Demo
 
-Here is a working live demo: <a href="admiring-gates-b1038c.netlify.app">Restaurant menu</a>
+Here is a working live demo: <a href="https://admiring-gates-b1038c.netlify.app/">Restaurant menu</a>
 
 ## Technologies used
 
